@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charcuterie Goemaere | Artisan Boucher-Charcutier à Saint-Quentin</title>
+  <meta name="description" content="Charcuterie Goemaere, artisan boucher-charcutier à Saint-Quentin. Produits faits maison, tradition et qualité depuis des années." />
+  <style>
+    :root {
+      --primary: #7a1f1f;
+      --secondary: #4e1414;
+      --light: #f8f6f3;
+      --dark: #1f1f1f;
+    }* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("https://images.unsplash.com/photo-1604908177522-040d4d56a47f");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+nav {
+  background-color: var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+section h2 {
+  color: var(--primary);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.about {
+  max-width: 900px;
+  margin: auto;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: var(--secondary);
+  margin-top: 0;
+}
+
+.infos {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.05rem;
+}
+
+footer {
+  background-color: var(--dark);
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+}
+
+footer strong { color: white; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 2.2rem; }
+  nav ul { gap: 20px; }
+}
+
+  </style>
+</head>
+<body><header>
+  <h1>Charcuterie Goemaere</h1>
+  <p>Artisan boucher-charcutier à Saint-Quentin — Tradition, qualité et produits faits maison</p>
+</header><nav>
+  <ul>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#products">Produits</a></li>
+    <li><a href="#infos">Infos pratiques</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav><section id="about">
+  <h2>Un savoir-faire artisanal</h2>
+  <p class="about">
+    Située au cœur de Saint-Quentin, la <strong>Charcuterie Goemaere</strong> vous accueille avec une
+    sélection de produits artisanaux préparés dans le respect des traditions.
+    Notre exigence : des ingrédients de qualité, des recettes authentiques et
+    le goût du travail bien fait.
+  </p>
+</section><section id="products">
+  <h2>Nos spécialités</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Jambons & viandes</h3>
+      <p>Viandes sélectionnées avec soin, découpes traditionnelles et jambons savoureux.</p>
+    </div>
+    <div class="card">
+      <h3>Saucisses maison</h3>
+      <p>Recettes artisanales, idéales pour le quotidien comme pour les grillades.</p>
+    </div>
+    <div class="card">
+      <h3>Pâtés & terrines</h3>
+      <p>Produits faits maison, riches en goût et fidèles au terroir.</p>
+    </div>
+    <div class="card">
+      <h3>Service traiteur</h3>
+      <p>Plats préparés pour vos événements, repas familiaux et occasions spéciales.</p>
+    </div>
+  </div>
+</section><section id="infos">
+  <h2>Informations pratiques</h2>
+  <div class="infos">
+    <p><strong>📍 Adresse :</strong> 35 Rue Camille Desmoulins, 02100 Saint-Quentin</p>
+    <p><strong>☎️ Téléphone :</strong> 03 23 08 16 39</p>
+    <p><strong>🕒 Horaires :</strong> Du mardi au samedi (horaires à confirmer)</p>
+  </div>
+</section><section id="contact">
+  <h2>Nous contacter</h2>
+  <p class="about">
+    Pour toute information ou commande, n’hésitez pas à nous appeler ou à venir
+    directement en boutique. Nous serons ravis de vous conseiller.
+  </p>
+</section><footer>
+  <p><strong>Charcuterie Goemaere</strong> — Saint-Quentin</p>
+  <p>© 2025 — Tous droits réservés</p>
+</footer></body>
+</html>
