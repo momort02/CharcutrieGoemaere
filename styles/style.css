@@ -151,6 +151,3 @@ footer strong { color: white; }
   .tel-link2 { display: none; }
 }
 
-/* Icône Waze dans le lien d'adresse */
-.waze-icon { width: 30px; height: auto; vertical-align: middle; display: inline-block; margin-left: 6px; }
-
