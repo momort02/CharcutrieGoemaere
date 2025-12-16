@@ -228,6 +228,29 @@
     <p><strong>Charcuterie Goemaere</strong> — Saint-Quentin</p>
     <p>© 2025 — Tous droits réservés</p>
   </footer>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDi953QvlkKi1_-zOvE3aS_qgrjos-sU3M",
+    authDomain: "charcutriegoemaere.firebaseapp.com",
+    projectId: "charcutriegoemaere",
+    storageBucket: "charcutriegoemaere.firebasestorage.app",
+    messagingSenderId: "124342609548",
+    appId: "1:124342609548:web:e7936e4e9f7ec123513da9",
+    measurementId: "G-VYY9XX1MRH"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 
 </html>
