@@ -1,2 +1,145 @@
+:root {
+      --primary: #7a1f1f;
+      --secondary: #4e1414;
+      --light: #f8f6f3;
+      --dark: #1f1f1f;
+    }* { box-sizing: border-box; }
 
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("https://images.unsplash.com/photo-1604908177522-040d4d56a47f");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+nav {
+  background-color: var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+section h2 {
+  color: var(--primary);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.about {
+  max-width: 900px;
+  margin: auto;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: var(--secondary);
+  margin-top: 0;
+}
+
+.infos {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.05rem;
+}
+
+footer {
+  background-color: var(--dark);
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+}
+
+footer strong { color: white; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 2.2rem; }
+  nav ul { gap: 20px; }
+}
+
+/* Styles pour le bloc d'horaires */
+#bloc-horaires { margin-top: 16px; }
+.liste-horaires-principaux { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.liste-horaires-principaux th.jour { text-align: left; padding: 8px 10px; width: 140px; color: var(--primary); font-weight: 700; vertical-align: top; }
+.liste-horaires-principaux td.liste { padding: 8px 10px; color: var(--dark); }
+.horaire { display: inline-block; background: #fff7ef; padding: 4px 8px; border-radius: 6px; margin-right: 6px; font-weight: 600; }
+.ferme { color: #a00; font-weight: 700; }
+.jour-en-cours .horaire { background: #ffecec; border: 1px solid var(--primary); }
+
+/* Badge de statut (ouvert / fermé) */
+.statut { font-weight: 800; margin-bottom: 6px; display: inline-block; }
+.statut.ouvert { color: #0a8a2f; }
+.statut.ferme { color: #a00; }
 
