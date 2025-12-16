@@ -14,7 +14,7 @@ body {
 }
 
 header {
-  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("https://images.unsplash.com/photo-1604908177522-040d4d56a47f");
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("https://s2.qwant.com/thumbr/474x355/d/2/cd511cc5782ff7903d0b50f7fce46b17c63e6e885faf159a256b8cdac2b859/OIP.5REighnpfm9TUxUKE3MdVgHaFj.jpg?u=https%3A%2F%2Ftse1.explicit.bing.net%2Fth%2Fid%2FOIP.5REighnpfm9TUxUKE3MdVgHaFj%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&q=0&b=1&p=0&a=0");
   background-size: cover;
   background-position: center;
   color: white;
@@ -142,4 +142,15 @@ footer strong { color: white; }
 .statut { font-weight: 800; margin-bottom: 6px; display: inline-block; }
 .statut.ouvert { color: #0a8a2f; }
 .statut.ferme { color: #a00; }
+
+/* Liens telephone */
+.tel-link1 { display: none; }
+.tel-link2 { display: inline; }
+@media (max-width: 700px), (hover: none) and (pointer: coarse) {
+  .tel-link1 { display: inline; }
+  .tel-link2 { display: none; }
+}
+
+/* Icône Waze dans le lien d'adresse */
+.waze-icon { width: 30px; height: auto; vertical-align: middle; display: inline-block; margin-left: 6px; }
 
