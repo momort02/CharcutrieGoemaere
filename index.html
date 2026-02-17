@@ -1,12 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta name="google-site-verification" content="zRKzOAlWwOiTcEA14Ip0K5QngK1hT8R2q4QP-URnVso" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charcuterie Goemaere | Artisan Boucher-Charcutier à Saint-Quentin</title>
+  <meta name="description"
+    content="Charcuterie Goemaere, artisan boucher-charcutier à Saint-Quentin. Produits faits maison, tradition et qualité depuis des années." />
+  <link href="styles/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <!-- Your content here -->
+  <header>
+    <h1>Charcuterie Goemaere</h1>
+    <p>Artisan boucher-charcutier à Saint-Quentin — Tradition, qualité et produits faits maison</p>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#products">Produits</a></li>
+      <li><a href="#infos">Infos pratiques</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <section id="about">
+    <h2>Un savoir-faire artisanal</h2>
+    <p class="about">
+      Située au cœur de Saint-Quentin, la <strong>Charcuterie Goemaere</strong> vous accueille avec une
+      sélection de produits artisanaux préparés dans le respect des traditions.
+      Notre exigence : des ingrédients de qualité, des recettes authentiques et
+      le goût du travail bien fait.
+    </p>
+  </section>
+  <section id="products">
+    <h2>Nos spécialités</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Jambons & viandes</h3>
+        <p>Viandes sélectionnées avec soin, découpes traditionnelles et jambons savoureux.</p>
+      </div>
+      <div class="card">
+        <h3>Saucisses maison</h3>
+        <p>Recettes artisanales, idéales pour le quotidien comme pour les grillades.</p>
+      </div>
+      <div class="card">
+        <h3>Pâtés & terrines</h3>
+        <p>Produits faits maison, riches en goût et fidèles au terroir.</p>
+      </div>
+      <div class="card">
+        <h3>Service traiteur</h3>
+        <p>Plats préparés pour vos événements, repas familiaux et occasions spéciales.</p>
+      </div>
+    </div>
+  </section>
+  <section id="infos">
+    <h2>Informations pratiques</h2>
+    <div class="infos">
+      <p><strong>Adresse :</strong> 35 Rue Camille Desmoulins, 02100 Saint-Quentin — <a href="https://www.google.com/maps/search/?api=1&query=35+Rue+Camille+Desmoulins+02100+Saint-Quentin" target="_blank" rel="noopener noreferrer">Google Maps</a> / <a href="https://waze.com/ul?q=35%20Rue%20Camille%20Desmoulins%2002100%20Saint-Quentin" target="_blank" rel="noopener noreferrer">Waze</a></p>
+      <p><strong class="tel-link1">Téléphone :</strong> <a class="tel-link1" href="tel:+33323081639">03 23 08 16 39</a></p>
+      <p><strong class="tel-link2">Téléphone :</strong> <a class="tel-link2">03 23 08 16 39</a></p>
+      <div id="bloc-horaires" class="lisere ferme">
+        <div id="infos-horaires" class="infos-horaires">
+          <p id="statut-horaires" class="statut"></p>
+          <table class="liste-horaires-principaux">
+            <tbody>
+              <tr class="horaire-ouvert">
+                <th scope="row" class="jour">Lundi</th>
+                <td class="liste"><span class="ferme">Fermé</span></td>
+              </tr>
+              <tr class="horaire-ouvert jour-en-cours ferme">
+                <th scope="row" class="jour">Mardi</th>
+                <td class="liste">
+                  <span>
+                    <span class="horaire">08h30 - 12h45</span>
+                  </span>
+                </td>
+              </tr>
+              <tr class="horaire-ouvert">
+                <th scope="row" class="jour">Mercredi</th>
+                <td class="liste">
+                  <span>
+                    <span class="horaire">08h30 - 12h30</span>
+                  </span>
+                </td>
+              </tr>
+              <tr class="horaire-ouvert">
+                <th scope="row" class="jour">Jeudi</th>
+                <td class="liste">
+                  <span>
+                    <span class="horaire">08h30 - 12h45</span>
+                  </span>
+                </td>
+              </tr>
+              <tr class="horaire-ouvert">
+                <th scope="row" class="jour">Vendredi</th>
+                <td class="liste">
+                  <span>
+                    <span class="horaire">08h30 - 12h30</span>
+                  </span>
+                  /
+                  <span>
+                    <span class="horaire">15h00 - 18h30</span>
+                  </span>
+                </td>
+              </tr>
+              <tr class="horaire-ouvert">
+                <th scope="row" class="jour">Samedi</th>
+                <td class="liste">
+                  <span>
+                    <span class="horaire">08h30 - 12h30</span>
+                  </span>
+                </td>
+              </tr>
+              <tr class="horaire-ouvert">
+                <th scope="row" class="jour">Dimanche</th>
+                <td class="liste"><span class="ferme">Fermé</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function(){
+        function parseTimeRange(str){
+          const m = str.match(/(\d{1,2})h(\d{2})\s*-\s*(\d{1,2})h(\d{2})/);
+          if(!m) return null;
+          return { start: parseInt(m[1],10)*60 + parseInt(m[2],10), end: parseInt(m[3],10)*60 + parseInt(m[4],10) };
+        }
+        const now = new Date();
+        const today = now.toLocaleDateString('fr-FR', { weekday: 'long' }).toLowerCase();
+        const currentMinutes = now.getHours()*60 + now.getMinutes();
+        const rows = document.querySelectorAll('.liste-horaires-principaux tbody tr');
+        let isOpenToday = false;
+        rows.forEach(tr => {
+          const dayEl = tr.querySelector('th.jour');
+          if(!dayEl) return;
+          const day = dayEl.textContent.trim().toLowerCase();
+          const td = tr.querySelector('td.liste');
+          tr.classList.remove('jour-en-cours');
+          if(day === today) tr.classList.add('jour-en-cours');
+          if(td.querySelector('.ferme')){
+            tr.classList.remove('ouvert');
+            tr.classList.add('ferme');
+            if(day === today) isOpenToday = false;
+            return;
+          }
+          const horaireEls = Array.from(td.querySelectorAll('.horaire'));
+          let open = false;
+          horaireEls.forEach(el => {
+            const range = parseTimeRange(el.textContent.trim());
+            if(range && currentMinutes >= range.start && currentMinutes <= range.end) open = true;
+          });
+          if(open){
+            tr.classList.add('ouvert');
+            tr.classList.remove('ferme');
+            if(day === today) isOpenToday = true;
+          } else {
+            tr.classList.remove('ouvert');
+            tr.classList.add('ferme');
+            if(day === today) isOpenToday = false;
+          }
+        });
+        const statusEl = document.getElementById('statut-horaires');
+        if(statusEl){
+          statusEl.textContent = isOpenToday ? 'Ouvert maintenant' : 'Fermé actuellement';
+          statusEl.classList.toggle('ouvert', isOpenToday);
+          statusEl.classList.toggle('ferme', !isOpenToday);
+        }
+      })();
+    </script>
+  </section>
+  <section id="contact">
+    <h2>Nous contacter</h2>
+    <p class="about">
+      Pour toute information ou commande, n'hésitez pas à nous appeler ou à venir
+      directement en boutique. Nous serons ravis de vous conseiller.
+    </p>
+  </section>
+  <footer>
+    <p><strong>Charcuterie Goemaere</strong> — Saint-Quentin</p>
+    <p>© 2025 — Tous droits réservés</p>
+  </footer>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDi953QvlkKi1_-zOvE3aS_qgrjos-sU3M",
+      authDomain: "charcutriegoemaere.firebaseapp.com",
+      projectId: "charcutriegoemaere",
+      storageBucket: "charcutriegoemaere.firebasestorage.app",
+      messagingSenderId: "124342609548",
+      appId: "1:124342609548:web:e7936e4e9f7ec123513da9",
+      measurementId: "G-VYY9XX1MRH"
+    };
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
+
 </html>
