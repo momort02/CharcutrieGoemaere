@@ -1,207 +1,401 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta name="google-site-verification" content="zRKzOAlWwOiTcEA14Ip0K5QngK1hT8R2q4QP-URnVso" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charcuterie Goemaere | Artisan Boucher-Charcutier à Saint-Quentin</title>
-  <meta name="description"
-    content="Charcuterie Goemaere, artisan boucher-charcutier à Saint-Quentin. Produits faits maison, tradition et qualité depuis des années." />
-  <link href="styles/style.css" rel="stylesheet">
-<link rel="icon" type="image/x-icon" href="logocharcut.ico">
-<link rel="SHORTCUT ICON" type="image/x-icon" href="logocharcut.ico">
+  <meta name="description" content="Charcuterie Goemaere, artisan boucher-charcutier à Saint-Quentin. Produits faits maison, tradition et qualité." />
+  <link rel="icon" type="image/x-icon" href="logocharcut.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
-
 <body>
-  <header>
-    <h1>Charcuterie Goemaere</h1>
-    <p>Artisan boucher-charcutier à Saint-Quentin — Tradition, qualité et produits faits maison</p>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#products">Produits</a></li>
-      <li><a href="#infos">Infos pratiques</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <section id="about">
-    <h2>Un savoir-faire artisanal</h2>
-    <p class="about">
-      Située au cœur de Saint-Quentin, la <strong>Charcuterie Goemaere</strong> vous accueille avec une
-      sélection de produits artisanaux préparés dans le respect des traditions.
-      Notre exigence : des ingrédients de qualité, des recettes authentiques et
-      le goût du travail bien fait.
-    </p>
-  </section>
-  <section id="products">
-    <h2>Nos spécialités</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Jambons & viandes</h3>
-        <p>Viandes sélectionnées avec soin, découpes traditionnelles et jambons savoureux.</p>
-      </div>
-      <div class="card">
-        <h3>Saucisses maison</h3>
-        <p>Recettes artisanales, idéales pour le quotidien comme pour les grillades.</p>
-      </div>
-      <div class="card">
-        <h3>Pâtés & terrines</h3>
-        <p>Produits faits maison, riches en goût et fidèles au terroir.</p>
-      </div>
-      <div class="card">
-        <h3>Service traiteur</h3>
-        <p>Plats préparés pour vos événements, repas familiaux et occasions spéciales.</p>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar">
+  <a class="nav-brand" href="#">
+    <span class="nav-brand-main">Charcuterie Goemaere</span>
+    <span class="nav-brand-sub">Saint-Quentin</span>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about"    onclick="closeMenu()">À propos</a></li>
+    <li><a href="#products" onclick="closeMenu()">Spécialités</a></li>
+    <li><a href="#commande" onclick="closeMenu()">Commander</a></li>
+    <li><a href="#infos"    onclick="closeMenu()">Horaires</a></li>
+    <li><a href="#contact"  onclick="closeMenu()">Contact</a></li>
+  </ul>
+
+  <div class="nav-droite">
+    <div id="navStatut" class="nav-statut ferme">Fermé</div>
+    <span class="nav-user-name" id="navUserName"></span>
+    <button class="nav-btn nav-btn-admin" id="navBtnAdmin" onclick="window.location.href='admin.html'">⚙ Admin</button>
+    <button class="nav-btn nav-btn-auth"  id="navBtnAuth"  onclick="ouvrirModal('login')">Se connecter</button>
+    <button class="nav-btn nav-btn-deconn" id="navBtnDeconn" onclick="seDeconnecter()">Déconnexion</button>
+    <button class="nav-panier-btn" onclick="document.getElementById('commande').scrollIntoView({behavior:'smooth'})">
+      🛒 Commande
+      <span class="nav-panier-count" id="panierCount" style="display:none">0</span>
+    </button>
+    <button class="burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Charcuterie artisanale"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">Artisan Boucher-Charcutier · Saint-Quentin</p>
+    <h1 class="hero-title">Tradition,<br><em>qualité</em> &amp; goût<br>depuis toujours.</h1>
+    <p class="hero-desc">Des produits faits maison, préparés chaque jour avec les meilleures viandes.</p>
+    <div class="hero-actions">
+      <a class="btn btn-rouge" href="#products">Nos spécialités</a>
+      <a class="btn btn-outline" href="#commande">Passer une commande</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"><span>Défiler</span><div class="scroll-line"></div></div>
+</section>
+
+
+<!-- ══ RUBAN ══ -->
+<div class="ruban" aria-hidden="true">
+  <div class="ruban-track">
+    <span class="ruban-item">Jambons &amp; Viandes</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Saucisses Maison</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Pâtés &amp; Terrines</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Service Traiteur</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Produits Faits Maison</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Recettes Artisanales</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Jambons &amp; Viandes</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Saucisses Maison</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Pâtés &amp; Terrines</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Service Traiteur</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Produits Faits Maison</span><span class="ruban-sep"></span>
+    <span class="ruban-item">Recettes Artisanales</span><span class="ruban-sep"></span>
+  </div>
+</div>
+
+
+<!-- ══ À PROPOS ══ -->
+<section id="about">
+  <div class="about-visuel">
+    <div class="about-visuel-img" role="img" aria-label="Intérieur de la charcuterie"></div>
+    <div class="about-cadre" aria-hidden="true"></div>
+    <div class="about-watermark" aria-hidden="true">Goemaere</div>
+  </div>
+  <div class="about-texte reveal">
+    <p class="section-tag">Notre histoire</p>
+    <h2 class="section-titre">Un savoir-faire<br><em>artisanal</em> transmis<br>avec passion</h2>
+    <p class="section-texte">Située au cœur de Saint-Quentin, la <strong>Charcuterie Goemaere</strong> vous accueille avec une sélection de produits artisanaux préparés dans le respect des traditions.</p>
+    <p class="section-texte">Nous sélectionnons nos viandes avec soin auprès de producteurs de confiance, garantissant fraîcheur et traçabilité à chacune de nos préparations.</p>
+    <div class="chiffres">
+      <div><div class="chiffre-num">100%</div><div class="chiffre-label">Fait maison</div></div>
+      <div><div class="chiffre-num">4</div><div class="chiffre-label">Gammes artisanales</div></div>
+      <div><div class="chiffre-num">★</div><div class="chiffre-label">Artisan certifié</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PRODUITS ══ -->
+<section id="products">
+  <div class="entete-section reveal">
+    <div>
+      <p class="section-tag">Nos spécialités</p>
+      <h2 class="section-titre">Des produits<br><em>faits maison</em></h2>
+    </div>
+    <p class="entete-droite">Chaque produit est élaboré dans notre atelier selon des recettes transmises de génération en génération.</p>
+  </div>
+  <div class="grille reveal">
+    <div class="carte">
+      <div class="carte-img"><div class="carte-icone">🥩</div></div>
+      <div class="carte-overlay"><span class="carte-overlay-btn">Commander</span></div>
+      <div class="carte-corps">
+        <p class="carte-cat">Boucherie</p>
+        <h3 class="carte-nom">Jambons &amp; Viandes</h3>
+        <p class="carte-desc">Viandes sélectionnées avec soin, découpes traditionnelles et jambons savoureux.</p>
+        <button class="carte-commander" onclick="ajouterAuPanier(1)">+ Ajouter à la commande</button>
       </div>
     </div>
-  </section>
-  <section id="infos">
-    <h2>Informations pratiques</h2>
-    <div class="infos">
-      <p><strong>Adresse :</strong> 35 Rue Camille Desmoulins, 02100 Saint-Quentin — <a href="https://www.google.com/maps/search/?api=1&query=35+Rue+Camille+Desmoulins+02100+Saint-Quentin" target="_blank" rel="noopener noreferrer">Google Maps</a> / <a href="https://waze.com/ul?q=35%20Rue%20Camille%20Desmoulins%2002100%20Saint-Quentin" target="_blank" rel="noopener noreferrer">Waze</a></p>
-      <p><strong class="tel-link1">Téléphone :</strong> <a class="tel-link1" href="tel:+33323081639">03 23 08 16 39</a></p>
-      <p><strong class="tel-link2">Téléphone :</strong> <a class="tel-link2">03 23 08 16 39</a></p>
-      <div id="bloc-horaires" class="lisere ferme">
-        <div id="infos-horaires" class="infos-horaires">
-          <p id="statut-horaires" class="statut"></p>
-          <table class="liste-horaires-principaux">
-            <tbody>
-              <tr class="horaire-ouvert">
-                <th scope="row" class="jour">Lundi</th>
-                <td class="liste"><span class="ferme">Fermé</span></td>
-              </tr>
-              <tr class="horaire-ouvert jour-en-cours ferme">
-                <th scope="row" class="jour">Mardi</th>
-                <td class="liste">
-                  <span>
-                    <span class="horaire">08h30 - 12h45</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="horaire-ouvert">
-                <th scope="row" class="jour">Mercredi</th>
-                <td class="liste">
-                  <span>
-                    <span class="horaire">08h30 - 12h30</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="horaire-ouvert">
-                <th scope="row" class="jour">Jeudi</th>
-                <td class="liste">
-                  <span>
-                    <span class="horaire">08h30 - 12h45</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="horaire-ouvert">
-                <th scope="row" class="jour">Vendredi</th>
-                <td class="liste">
-                  <span>
-                    <span class="horaire">08h30 - 12h30</span>
-                  </span>
-                  /
-                  <span>
-                    <span class="horaire">15h00 - 18h30</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="horaire-ouvert">
-                <th scope="row" class="jour">Samedi</th>
-                <td class="liste">
-                  <span>
-                    <span class="horaire">08h30 - 12h30</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="horaire-ouvert">
-                <th scope="row" class="jour">Dimanche</th>
-                <td class="liste"><span class="ferme">Fermé</span></td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="carte">
+      <div class="carte-img"><div class="carte-icone">🌭</div></div>
+      <div class="carte-overlay"><span class="carte-overlay-btn">Commander</span></div>
+      <div class="carte-corps">
+        <p class="carte-cat">Maison</p>
+        <h3 class="carte-nom">Saucisses Maison</h3>
+        <p class="carte-desc">Recettes artisanales, idéales pour le quotidien comme pour les grillades estivales.</p>
+        <button class="carte-commander" onclick="ajouterAuPanier(2)">+ Ajouter à la commande</button>
+      </div>
+    </div>
+    <div class="carte">
+      <div class="carte-img"><div class="carte-icone">🍖</div></div>
+      <div class="carte-overlay"><span class="carte-overlay-btn">Commander</span></div>
+      <div class="carte-corps">
+        <p class="carte-cat">Charcuterie</p>
+        <h3 class="carte-nom">Pâtés &amp; Terrines</h3>
+        <p class="carte-desc">Produits faits maison, riches en goût et fidèles au terroir régional.</p>
+        <button class="carte-commander" onclick="ajouterAuPanier(3)">+ Ajouter à la commande</button>
+      </div>
+    </div>
+    <div class="carte">
+      <div class="carte-img"><div class="carte-icone">🍽️</div></div>
+      <div class="carte-overlay"><span class="carte-overlay-btn">Commander</span></div>
+      <div class="carte-corps">
+        <p class="carte-cat">Événements</p>
+        <h3 class="carte-nom">Service Traiteur</h3>
+        <p class="carte-desc">Plats préparés pour vos événements, repas familiaux et occasions spéciales.</p>
+        <button class="carte-commander" onclick="ajouterAuPanier(4)">+ Ajouter à la commande</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ COMMANDE ══ -->
+<section id="commande">
+  <div class="commande-inner">
+
+    <div class="commande-intro reveal">
+      <p class="section-tag">Réservez vos produits</p>
+      <h2 class="section-titre">Passer une<br><em>commande</em></h2>
+      <p class="section-texte">Réservez vos produits à l'avance et venez les récupérer en boutique. Un compte est nécessaire pour commander.</p>
+      <div class="commande-avantages">
+        <div class="avantage"><span class="avantage-icone">🎯</span><div class="avantage-texte"><h4>Commande sur-mesure</h4><p>Indiquez vos quantités et préférences.</p></div></div>
+        <div class="avantage"><span class="avantage-icone">⏰</span><div class="avantage-texte"><h4>Prêt à votre heure</h4><p>Choisissez votre créneau de retrait.</p></div></div>
+        <div class="avantage"><span class="avantage-icone">📞</span><div class="avantage-texte"><h4>Confirmation par téléphone</h4><p>Nous vous rappelons pour valider la commande.</p></div></div>
+        <div class="avantage"><span class="avantage-icone">🏆</span><div class="avantage-texte"><h4>Qualité garantie</h4><p>Préparés le matin même pour une fraîcheur optimale.</p></div></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <!-- Zone verrouillée — visible si non connecté -->
+      <div class="commande-locked" id="commandeLocked">
+        <div class="commande-locked-icone">🔒</div>
+        <h3>Connexion requise</h3>
+        <p>Créez un compte ou connectez-vous pour passer votre commande en ligne.</p>
+        <div class="commande-locked-btns">
+          <button class="btn-or"         onclick="ouvrirModal('login')">Se connecter</button>
+          <button class="btn-or-outline" onclick="ouvrirModal('register')">Créer un compte</button>
         </div>
       </div>
-    </div>
-    <script>
-      (function(){
-        function parseTimeRange(str){
-          const m = str.match(/(\d{1,2})h(\d{2})\s*-\s*(\d{1,2})h(\d{2})/);
-          if(!m) return null;
-          return { start: parseInt(m[1],10)*60 + parseInt(m[2],10), end: parseInt(m[3],10)*60 + parseInt(m[4],10) };
-        }
-        const now = new Date();
-        const today = now.toLocaleDateString('fr-FR', { weekday: 'long' }).toLowerCase();
-        const currentMinutes = now.getHours()*60 + now.getMinutes();
-        const rows = document.querySelectorAll('.liste-horaires-principaux tbody tr');
-        let isOpenToday = false;
-        rows.forEach(tr => {
-          const dayEl = tr.querySelector('th.jour');
-          if(!dayEl) return;
-          const day = dayEl.textContent.trim().toLowerCase();
-          const td = tr.querySelector('td.liste');
-          tr.classList.remove('jour-en-cours');
-          if(day === today) tr.classList.add('jour-en-cours');
-          if(td.querySelector('.ferme')){
-            tr.classList.remove('ouvert');
-            tr.classList.add('ferme');
-            if(day === today) isOpenToday = false;
-            return;
-          }
-          const horaireEls = Array.from(td.querySelectorAll('.horaire'));
-          let open = false;
-          horaireEls.forEach(el => {
-            const range = parseTimeRange(el.textContent.trim());
-            if(range && currentMinutes >= range.start && currentMinutes <= range.end) open = true;
-          });
-          if(open){
-            tr.classList.add('ouvert');
-            tr.classList.remove('ferme');
-            if(day === today) isOpenToday = true;
-          } else {
-            tr.classList.remove('ouvert');
-            tr.classList.add('ferme');
-            if(day === today) isOpenToday = false;
-          }
-        });
-        const statusEl = document.getElementById('statut-horaires');
-        if(statusEl){
-          statusEl.textContent = isOpenToday ? 'Ouvert maintenant' : 'Fermé actuellement';
-          statusEl.classList.toggle('ouvert', isOpenToday);
-          statusEl.classList.toggle('ferme', !isOpenToday);
-        }
-      })();
-    </script>
-  </section>
-  <section id="contact">
-    <h2>Nous contacter</h2>
-    <p class="about">
-      Pour toute information ou commande, n'hésitez pas à nous appeler ou à venir
-      directement en boutique. Nous serons ravis de vous conseiller.
-    </p>
-  </section>
-  <footer>
-    <p><strong>Charcuterie Goemaere</strong> — Saint-Quentin</p>
-    <p>© 2025 — Tous droits réservés</p>
-  </footer>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDi953QvlkKi1_-zOvE3aS_qgrjos-sU3M",
-      authDomain: "charcutriegoemaere.firebaseapp.com",
-      projectId: "charcutriegoemaere",
-      storageBucket: "charcutriegoemaere.firebasestorage.app",
-      messagingSenderId: "124342609548",
-      appId: "1:124342609548:web:e7936e4e9f7ec123513da9",
-      measurementId: "G-VYY9XX1MRH"
-    };
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-</body>
 
+      <!-- Formulaire — visible si connecté -->
+      <div class="commande-form-wrap" id="commandeFormWrap" style="display:none">
+        <p class="commande-form-titre">Votre demande de commande</p>
+
+        <div id="formuSucces" class="form-success">
+          <div class="form-success-icone">✅</div>
+          <h3>Commande reçue !</h3>
+          <p>Merci ! Nous vous contacterons au numéro indiqué pour confirmer votre retrait.<br>
+          Référence : <span class="succes-id"></span></p>
+        </div>
+
+        <form id="formuCommande" novalidate>
+          <div class="mini-panier">
+            <p class="mini-panier-titre">🛒 Produits sélectionnés</p>
+            <div id="miniPanierItems"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cmdNom">Nom &amp; Prénom *</label>
+              <input type="text" id="cmdNom" name="nom" placeholder="Jean Dupont" required />
+            </div>
+            <div class="form-group">
+              <label for="cmdTel">Téléphone *</label>
+              <input type="tel" id="cmdTel" name="tel" placeholder="06 XX XX XX XX" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cmdProduit">Produit souhaité *</label>
+            <select id="cmdProduit" name="produit" required>
+              <option value="" disabled selected>— Choisissez —</option>
+              <option>Jambons &amp; Viandes</option>
+              <option>Saucisses Maison</option>
+              <option>Pâtés &amp; Terrines</option>
+              <option>Service Traiteur</option>
+              <option>Autre / Mixte</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cmdDate">Date de retrait *</label>
+              <input type="date" id="cmdDate" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="cmdHeure">Heure</label>
+              <select id="cmdHeure" name="heure">
+                <option value="">— Heure —</option>
+                <option>08h30</option><option>09h00</option><option>09h30</option>
+                <option>10h00</option><option>10h30</option><option>11h00</option>
+                <option>11h30</option><option>12h00</option><option>12h30</option>
+                <option>15h00</option><option>15h30</option><option>16h00</option>
+                <option>16h30</option><option>17h00</option><option>17h30</option><option>18h00</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cmdMessage">Précisions &amp; quantités</label>
+            <textarea id="cmdMessage" name="message" placeholder="Ex : 1 kg de saucisses, 500g de pâté maison, plateau pour 12 personnes…"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Envoyer ma commande →</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ INFOS ══ -->
+<section id="infos">
+  <div class="infos-horaires reveal">
+    <p class="section-tag">Quand nous trouver</p>
+    <h2 class="section-titre">Horaires<br><em>d'ouverture</em></h2>
+    <div id="statut-badge" class="ferme" role="status" aria-live="polite">
+      <span class="badge-dot"></span><span id="statut-texte">Fermé actuellement</span>
+    </div>
+    <table class="horaires-table" id="horaires-table">
+      <tbody>
+        <tr data-jour="lundi">   <th>Lundi</th>    <td><span class="ferme-texte">Fermé</span></td></tr>
+        <tr data-jour="mardi">   <th>Mardi</th>    <td data-plages="08:30-12:45"></td></tr>
+        <tr data-jour="mercredi"><th>Mercredi</th> <td data-plages="08:30-12:30"></td></tr>
+        <tr data-jour="jeudi">   <th>Jeudi</th>    <td data-plages="08:30-12:45"></td></tr>
+        <tr data-jour="vendredi"><th>Vendredi</th> <td data-plages="08:30-12:30|15:00-18:30"></td></tr>
+        <tr data-jour="samedi">  <th>Samedi</th>   <td data-plages="08:30-12:30"></td></tr>
+        <tr data-jour="dimanche"><th>Dimanche</th> <td><span class="ferme-texte">Fermé</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="infos-adresse reveal">
+    <p class="section-tag">Où nous trouver</p>
+    <h2 class="section-titre">Adresse &amp;<br><em>Contact</em></h2>
+    <div class="adresse-items">
+      <div>
+        <p class="adresse-label">📍 Adresse</p>
+        <p class="adresse-valeur">35 Rue Camille Desmoulins<br>02100 Saint-Quentin</p>
+        <div class="liens-nav">
+          <a class="lien-nav" href="https://www.google.com/maps/search/?api=1&query=35+Rue+Camille+Desmoulins+02100+Saint-Quentin" target="_blank" rel="noopener">🗺 Google Maps</a>
+          <a class="lien-nav" href="https://waze.com/ul?q=35%20Rue%20Camille%20Desmoulins%2002100%20Saint-Quentin" target="_blank" rel="noopener">🚗 Waze</a>
+        </div>
+      </div>
+      <div>
+        <p class="adresse-label">📞 Téléphone</p>
+        <p class="adresse-valeur">
+          <a class="tel-mobile" href="tel:+33323081639">03 23 08 16 39</a>
+          <span class="tel-desktop">03 23 08 16 39</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="reveal">
+    <p class="section-tag">Nous contacter</p>
+    <h2 class="section-titre">Venez nous<br><em>rendre visite</em></h2>
+    <p class="section-texte">Pour toute information ou commande, n'hésitez pas à nous appeler ou à venir directement en boutique.</p>
+    <div class="contact-btns">
+      <a class="btn-plein" href="#commande">🛒 Commander en ligne</a>
+      <a class="btn-plein tel-mobile" href="tel:+33323081639">📞 Nous appeler</a>
+      <a class="btn-bord" href="https://www.google.com/maps/search/?api=1&query=35+Rue+Camille+Desmoulins+02100+Saint-Quentin" target="_blank" rel="noopener">📍 Nous trouver</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div>
+    <div class="footer-marque"><span>C</span>harcuterie Goemaere</div>
+    <div class="footer-ville">Saint-Quentin · Aisne</div>
+  </div>
+  <ul class="footer-liens">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#products">Spécialités</a></li>
+    <li><a href="#commande">Commander</a></li>
+    <li><a href="#infos">Horaires</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 — Tous droits réservés</div>
+</footer>
+
+
+<!-- ══ MODAL AUTH ══ -->
+<div class="auth-modal-overlay" id="authModal" role="dialog" aria-modal="true" aria-label="Connexion">
+  <div class="auth-modal">
+    <div class="auth-modal-header">
+      <p class="auth-modal-logo"><span>C</span>harcuterie Goemaere</p>
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" data-tab="login"    onclick="basculerOnglet('login')">Se connecter</button>
+        <button class="auth-tab-btn"        data-tab="register" onclick="basculerOnglet('register')">Créer un compte</button>
+      </div>
+    </div>
+    <button class="auth-close" onclick="fermerModal()" aria-label="Fermer">✕</button>
+
+    <div class="auth-body">
+
+      <!-- Login -->
+      <div class="auth-panel active" data-panel="login">
+        <form id="formLogin" novalidate>
+          <div class="auth-field">
+            <label for="loginEmail">Email ou identifiant</label>
+            <input type="text" id="loginEmail" placeholder="votre@email.fr" required autocomplete="username" />
+          </div>
+          <div class="auth-field">
+            <label for="loginMdp">Mot de passe</label>
+            <input type="password" id="loginMdp" placeholder="••••••••" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="auth-submit">Se connecter →</button>
+          <div class="auth-msg" id="authError"></div>
+        </form>
+        <p class="auth-footer">Pas encore de compte ? <a onclick="basculerOnglet('register')">S'inscrire</a></p>
+        <p class="auth-footer" style="margin-top:.4rem;font-size:.72rem;opacity:.6">Admin : login <code>admin</code> / mdp <code>admin2024</code></p>
+      </div>
+
+      <!-- Register -->
+      <div class="auth-panel" data-panel="register">
+        <form id="formRegister" novalidate>
+          <div class="auth-field">
+            <label for="regNom">Nom complet</label>
+            <input type="text" id="regNom" placeholder="Jean Dupont" required />
+          </div>
+          <div class="auth-field">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="votre@email.fr" required autocomplete="email" />
+          </div>
+          <div class="auth-field">
+            <label for="regMdp">Mot de passe</label>
+            <input type="password" id="regMdp" placeholder="6 caractères min." required autocomplete="new-password" />
+          </div>
+          <div class="auth-field">
+            <label for="regMdp2">Confirmer le mot de passe</label>
+            <input type="password" id="regMdp2" placeholder="••••••••" required autocomplete="new-password" />
+          </div>
+          <button type="submit" class="auth-submit">Créer mon compte →</button>
+          <div class="auth-msg" id="authSucces"></div>
+        </form>
+        <p class="auth-footer">Déjà un compte ? <a onclick="basculerOnglet('login')">Se connecter</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ TOAST ══ -->
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<!-- main.js : Firebase ESM (Analytics + Firestore pour les commandes) -->
+<script type="module" src="main.js"></script>
+</body>
 </html>
