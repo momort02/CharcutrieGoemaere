@@ -22,15 +22,15 @@
     <p class="login-sub">Réservé à l'équipe Goemaere</p>
     <form id="loginAdminForm" novalidate>
       <div class="lf-group">
-        <label for="aLogin">Identifiant</label>
-        <input type="text" id="aLogin" placeholder="admin" required autocomplete="username" />
+        <label for="aLogin">Adresse email</label>
+        <input type="email" id="aLogin" placeholder="admin@goemaere.fr" required autocomplete="email" />
       </div>
       <div class="lf-group">
         <label for="aMdp">Mot de passe</label>
         <input type="password" id="aMdp" placeholder="••••••••" required autocomplete="current-password" />
       </div>
       <div class="lf-error" id="loginErr"></div>
-      <button type="submit" class="lf-submit">Accéder au panneau →</button>
+      <button type="submit" id="btnAdminLogin" class="lf-submit">Accéder au panneau →</button>
     </form>
     <a class="login-retour" href="index.html">← Retour au site</a>
   </div>
