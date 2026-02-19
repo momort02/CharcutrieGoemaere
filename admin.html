@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Charcuterie Goemaere</title>
+  <link rel="icon" type="image/x-icon" href="logocharcut.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<!-- ══ LOGIN ADMIN ══ -->
+<div id="adminLogin" class="login-screen">
+  <div class="login-card">
+    <div class="login-brand">
+      <span class="login-brand-dot">C</span>harcuterie Goemaere
+      <span class="login-badge">Admin</span>
+    </div>
+    <h1 class="login-titre">Panneau de gestion</h1>
+    <p class="login-sub">Réservé à l'équipe Goemaere</p>
+    <form id="loginAdminForm" novalidate>
+      <div class="lf-group">
+        <label for="aLogin">Identifiant</label>
+        <input type="text" id="aLogin" placeholder="admin" required autocomplete="username" />
+      </div>
+      <div class="lf-group">
+        <label for="aMdp">Mot de passe</label>
+        <input type="password" id="aMdp" placeholder="••••••••" required autocomplete="current-password" />
+      </div>
+      <div class="lf-error" id="loginErr"></div>
+      <button type="submit" class="lf-submit">Accéder au panneau →</button>
+    </form>
+    <a class="login-retour" href="index.html">← Retour au site</a>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="adminApp" class="app" style="display:none">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="sidebar-brand-letter">C</span>
+      <div>
+        <div class="sidebar-brand-name">Goemaere</div>
+        <div class="sidebar-brand-role">Administration</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="snav-item active" data-panel="dashboard" onclick="showPanel('dashboard')">
+        <span class="snav-icon">📊</span> Tableau de bord
+      </button>
+      <button class="snav-item" data-panel="commandes" onclick="showPanel('commandes')">
+        <span class="snav-icon">📦</span> Commandes
+        <span class="snav-badge" id="badgeNouvelles">0</span>
+      </button>
+      <button class="snav-item" data-panel="clients" onclick="showPanel('clients')">
+        <span class="snav-icon">👥</span> Clients
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-admin-info">
+        <div class="sidebar-avatar">A</div>
+        <div>
+          <div class="sidebar-admin-nom">Administrateur</div>
+          <div class="sidebar-admin-role">admin</div>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <a href="index.html" class="sidebar-link">← Site public</a>
+        <button class="sidebar-logout" onclick="adminLogout()">Déconnexion</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="main-header">
+      <div>
+        <h1 class="main-title" id="mainTitle">Tableau de bord</h1>
+        <p class="main-date" id="mainDate"></p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-refresh" onclick="refreshAll()" title="Actualiser">↺ Actualiser</button>
+      </div>
+    </header>
+
+    <!-- ── PANEL : DASHBOARD ── -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="kpis">
+        <div class="kpi">
+          <div class="kpi-label">Commandes totales</div>
+          <div class="kpi-value" id="kpiTotal">0</div>
+          <div class="kpi-sub">depuis le début</div>
+        </div>
+        <div class="kpi kpi-or">
+          <div class="kpi-label">Nouvelles</div>
+          <div class="kpi-value" id="kpiNouvelles">0</div>
+          <div class="kpi-sub">en attente</div>
+        </div>
+        <div class="kpi kpi-vert">
+          <div class="kpi-label">En préparation</div>
+          <div class="kpi-value" id="kpiPrep">0</div>
+          <div class="kpi-sub">en cours</div>
+        </div>
+        <div class="kpi kpi-gris">
+          <div class="kpi-label">Prêtes / Livrées</div>
+          <div class="kpi-value" id="kpiDone">0</div>
+          <div class="kpi-sub">terminées</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Clients inscrits</div>
+          <div class="kpi-value" id="kpiClients">0</div>
+          <div class="kpi-sub">comptes créés</div>
+        </div>
+      </div>
+
+      <!-- Commandes récentes -->
+      <div class="section-bloc">
+        <div class="bloc-header">
+          <h2 class="bloc-titre">Commandes récentes</h2>
+          <button class="lien-voir-tout" onclick="showPanel('commandes')">Voir tout →</button>
+        </div>
+        <div id="dashRecentes"></div>
+      </div>
+
+      <!-- Retrait du jour -->
+      <div class="section-bloc">
+        <div class="bloc-header">
+          <h2 class="bloc-titre">Retraits prévus aujourd'hui</h2>
+        </div>
+        <div id="dashAujourdhui"></div>
+      </div>
+    </div>
+
+    <!-- ── PANEL : COMMANDES ── -->
+    <div class="panel" id="panel-commandes">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <div class="search-wrap">
+            <input type="text" id="searchCommandes" class="search-input" placeholder="🔍 Rechercher par client, référence…" oninput="renderCommandes()" />
+          </div>
+          <select class="filtre-select" id="filtreStatut" onchange="renderCommandes()">
+            <option value="">Tous les statuts</option>
+            <option value="nouvelle">🔴 Nouvelle</option>
+            <option value="en_preparation">🟠 En préparation</option>
+            <option value="prete">🟢 Prête</option>
+            <option value="annulee">⚫ Annulée</option>
+          </select>
+          <select class="filtre-select" id="filtreDate" onchange="renderCommandes()">
+            <option value="">Toutes les dates</option>
+            <option value="today">Aujourd'hui</option>
+            <option value="week">Cette semaine</option>
+            <option value="month">Ce mois</option>
+          </select>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn-export" onclick="exportCSV()">⬇ Exporter CSV</button>
+        </div>
+      </div>
+
+      <div id="listeCommandes"></div>
+    </div>
+
+    <!-- ── PANEL : CLIENTS ── -->
+    <div class="panel" id="panel-clients">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <div class="search-wrap">
+            <input type="text" id="searchClients" class="search-input" placeholder="🔍 Rechercher un client…" oninput="renderClients()" />
+          </div>
+        </div>
+        <div class="toolbar-right">
+          <span class="toolbar-count" id="clientsCount"></span>
+        </div>
+      </div>
+      <div id="listeClients"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══ MODAL DÉTAIL COMMANDE ══ -->
+<div class="modal-overlay" id="cmdModal" onclick="if(event.target===this)fermerCmdModal()">
+  <div class="cmd-modal">
+    <button class="cmd-modal-close" onclick="fermerCmdModal()">✕</button>
+    <div id="cmdModalContent"></div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div id="adminToast" class="admin-toast"></div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
